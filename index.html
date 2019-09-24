@@ -1,0 +1,149 @@
+<!-- don't try to undestund this code! you will lose your mind-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- polices pour les titres -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+   <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
+
+
+</head>
+<body>
+<div class="block">
+    <header class="header">
+        <a href="#" class="header-logo">Mon logo</a>
+        <nav class="header-menu">
+            <a href="#">Acceil</a>
+            <a href="#"> A propos</a>
+            <a href="#">Recherche</a>
+            <a href="#"> Nous contacter</a>
+
+        </nav>
+    </header>
+
+</div>
+<!-- recherche button-->
+<form class="recherche">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Me localiser
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+<!-- recherche button-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="src/js/main.js"></script>
+</body>
+
+</html>
+
+
+
+
+<?php
+// On démarre la session AVANT d'écrire du code HTML
+/*unset($_COOKIE["username"]);
+// empty value and expiration one hour before
+$res = setcookie("username", '', time() - 3600);*/
+if(!session_id()) {
+    session_start();
+}
+session_destroy();
+
+if(htmlspecialchars(isset($_GET["deconnexion"])))
+{
+    session_destroy();
+
+
+}
+if(htmlspecialchars(isset($_POST["rememberMe"])) )
+{
+ echo 'pas de soucis';
+}
+elseif(htmlspecialchars(isset($_POST["username"])) and htmlspecialchars(isset($_POST["password"])))
+{
+    $_SESSION["username"]=$_POST["username"];
+
+}
+
+?>
+
+<?php
+ if(htmlspecialchars(isset( $_POST["username"] )) and htmlspecialchars(isset($_POST["password"])))
+ {
+     echo 'je me nome'. $_POST["username"].' '. $_POST["password"];
+ }
+?>
+
+
+$req = $bdd->prepare('INSERT INTO user(nom, prenom, email, password, birthday, numero)
+VALUES(:nom, :prenom, :email, :password, :birthday, :numero)');
+
+$req->execute(array(
+'nom' => $_POST['firstName'],
+'prenom' => $_POST['lastName'],
+'email' =>$_POST['email'],
+'password' => $_POST['password'],
+'birthday' => $_POST['birthDate'],
+'numero' => $_POST['phoneNumber']
+
+));
+
+
+
+$email=$_POST["email"];
+//  Récupération de l'utilisateur et de son pass hashé
+$req = $bdd->prepare('SELECT id, password FROM user WHERE email = :email');
+$req->execute(array(
+'email' => $email));
+
+$resultat = $req->fetch();
+
+// Comparaison du pass envoyé via le formulaire avec la base
+$isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
+
+if (!$resultat)
+{
+echo 'Mauvais identifiant ou mot de passe !';
+}
+else
+{
+if ($isPasswordCorrect) {
+$_SESSION['id'] = $resultat['id'];
+$_SESSION['email'] = $email;
+echo 'Vous êtes connecté !';
+}
+else {
+echo 'Mauvais identifiant ou mot de passe !';
+}
+}
