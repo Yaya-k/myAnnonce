@@ -20,7 +20,11 @@ if(htmlspecialchars(isset($_SESSION["email"])));
 }
 
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
 
@@ -36,6 +40,8 @@ User Profile Sidebar by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 -->
+</head>
+<body style="margin-top: 70px">
 
 <div class="container">
     <div class="row profile">
@@ -234,3 +240,6 @@ Licensed under MIT
 
     }
 </script>
+
+</body>
+</html>

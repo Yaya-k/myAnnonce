@@ -14,7 +14,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
     <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
 </head>
-<body>
+<body style="margin-top: 70px">
     <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="index.php">
@@ -33,10 +33,14 @@ session_start();
                 <a class="navbar-item" href="index.php">
                     Home
                 </a>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-danger" href="annonce.php">
+                            <strong>Déposer une annonce</strong>
+                        </a>
 
-                <a class="navbar-item" href="rechercheform.php">
-                    Recherche
-                </a>
+                    </div>
+                </div>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">

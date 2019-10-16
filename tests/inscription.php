@@ -63,7 +63,7 @@ include ("header.php")
         <div class="form-group">
             <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
             <div class="col-sm-9">
-                <input type="phoneNumber" id="phoneNumber" placeholder="Phone number" class="form-control" name="phoneNumber" required>
+                <input type="phoneNumber" id="phoneNumber" placeholder="Phone number" class="form-control" name="phoneNumber"  >
                 <span class="help-block">Your phone number won't be disclosed anywhere </span>
             </div>
         </div>

@@ -35,61 +35,43 @@ if(htmlspecialchars(isset($_COOKIE["email"]))){
 }
 
 ?>
-<!-- don't try to undestund this code! you will lose your mind-->
-<!DOCTYPE html>
-<br lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- polices pour les titres -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
-    <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
-
-
-</head>
-<br>
 
 
 <?php
 
 
 // ici je gere l'inscription des nouveau membres
-  if(htmlspecialchars(isset($_POST['registerButton'])))
-  {
+if(htmlspecialchars(isset($_POST['registerButton'])))
+{
 // je me connecte a la base de donner
 
 
 
-      $nom = $_POST['firstName'];
-      $prenom = $_POST['lastName'];
-      $email =$_POST['email'];
+    $nom = $_POST['firstName'];
+    $prenom = $_POST['lastName'];
+    $email =$_POST['email'];
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $birthday = $_POST['birthDate'];
     $numero = $_POST['phoneNumber'];
 
-      $sql = "INSERT   user (nom, prenom, email, password, birthday, numero) VALUES(?,?,?,?,?,?)";
-      $stmtinsert = $bdd->prepare($sql);
-      $result = $stmtinsert->execute([$nom, $prenom, $email, $password, $birthday, $numero]);
-      if($result){
-          echo 'Successfully saved.';
-      }else{
-          echo 'There were erros while saving the data.';
-      }
+    $sql = "INSERT   user (nom, prenom, email, password, birthday, numero) VALUES(?,?,?,?,?,?)";
+    $stmtinsert = $bdd->prepare($sql);
+    $result = $stmtinsert->execute([$nom, $prenom, $email, $password, $birthday, $numero]);
+    if($result){
+        echo 'Successfully saved.';
+    }else{
+        echo 'There were erros while saving the data.';
+    }
 
-      $_SESSION["email"]=$_POST["email"];
+    $_SESSION["email"]=$_POST["email"];
 
-  }
+}
 
 //$reponse = $bdd->query('SELECT * FROM user');
 
 //while ($donnees = $reponse->fetch())
 //{
- //   echo $donnees['nom'] . '<br />';
+//   echo $donnees['nom'] . '<br />';
 //}
 
 //$reponse->closeCursor();
@@ -115,7 +97,6 @@ if(htmlspecialchars(isset($_POST["submitLogin"])))
     if (!$resultat)
     {
         $_SESSION["error"]="Mauvais identifiant mot de passe !";
-        echo 'Mauvais identifiant mot de passe !';
         header("location:logIn.php");
         return;
     }
@@ -125,12 +106,10 @@ if(htmlspecialchars(isset($_POST["submitLogin"])))
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['email'] = $email;
 
-            echo 'Vous êtes connecté !';
             $_SESSION["error"]='';
         }
         else {
             $_SESSION["error"]="Mauvais identifiant mot de passe !";
-            echo 'Mauvais identifiant ou mot de passe !';
             header("location:logIn.php");
 
             return;
@@ -142,18 +121,38 @@ if(htmlspecialchars(isset($_POST["submitLogin"])))
 }
 
 ?>
+
+<!-- don't try to undestund this code! you will lose your mind-->
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- polices pour les titres -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+    <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
+
+
+</head>
+
+
 <?php include ("header.php");?>
-</br>
-</br>
-</br>
-</br>
+
 <?php
 if(htmlspecialchars(isset($_SESSION["email"])) or htmlspecialchars(!isset($_POST["submitLogin"])) or htmlspecialchars(!isset($_POST["registerButton"])))
 include ("rechercheform.php");
 $_SESSION["error"]='';
     ?>
-
 <!-- nous allons recuperer les donner provenend de pages -->
+</br>
+</br>
+</br>
+<?php include 'test.php'?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="src/js/main.js"></script>
