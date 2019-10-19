@@ -6,15 +6,12 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- polices pour les titres -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
-    <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+
+
 </head>
-<body style="margin-top: 70px">
+<body >
     <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="index.php">
@@ -106,7 +103,6 @@ session_start();
 <!-- recherche button-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="src/js/main.js"></script>
 </body>
 
 </html>

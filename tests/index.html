@@ -468,3 +468,153 @@ margin-left: 7px;
 <option>Bignona</option>
 
 onfocus='this.size=9;' onblur='this.size=1;' onchange='this.size=1; this.blur();'
+
+*
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- jquery -->
+
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+<!-- bulma -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+<!-- css file-->
+<link rel="stylesheet" href="src/css/main.css">
+
+
+<!-- boostrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- polices pour les titres -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+<script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<header>
+    <!-- jquery -->
+
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+    <!-- polices pour les titres -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+    <script defer src= "https://use.fontawesome.com/releases/v5.0.6/js/all.js "></script>
+
+
+    <!-- bulma -->
+    <!-- css file-->
+    <link rel="stylesheet" href="src/css/main.css">
+</header>
+<body>
+
+<!--Main Navigation-->
+
+<form method="post" action="testConsolePhp.php">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-xs-1" >
+                <img id="photoPrincipale" src="src/images/photoPrincipale.PNG",alt="photo principal" style="cursor:pointer">
+                <input name="fileToUpload" type="file"  id="fileToUpload" accept=".gif,.jpg,.jpeg,.png" style="display:none" onchange="uploadImage(this)"/>
+                <span id="supprimerPhotoPrincipale" style="cursor: pointer;display: none;color:red ;">Supprimer</span>
+
+            </div>
+
+            </br>
+            <span id='messageIfSameImages' class="col-lg-12"></span>
+        </div>
+
+        </br>
+        </br>
+
+
+    </div>
+    <button name="submitAnnonce" type="submit" id="submitAnnonce" class="btn btn-primary col-lg-3" style="margin-left: 4px">Valider</button>
+
+</form>
+
+<script>
+
+    $("#photoPrincipale").click(function () {
+        $("#fileToUpload").trigger('click');
+    });
+
+    function uploadImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#photoPrincipale')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(120);
+
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
